@@ -1,0 +1,435 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+/* Hero Section Styling */
+header {
+  background: linear-gradient(135deg, #0071c5 0%, #003d82 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+header div {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero Fade-in Animations */
+header img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 30px;
+  filter: brightness(0) invert(1);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.5s forwards;
+}
+
+header p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0;
+  line-height: 1.8;
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Timeline Section - Desktop Horizontal Scroll */
+.timeline {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%);
+  padding: 80px 0;
+}
+
+.timeline-container {
+  display: flex;
+  gap: 30px;
+  padding: 60px 0 60px 40px;
+  padding-right: 40px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 100%;
+  align-items: flex-start;
+  scroll-padding-left: 40px;
+}
+
+.timeline-container::-webkit-scrollbar {
+  height: 12px;
+}
+
+.timeline-container::-webkit-scrollbar-track {
+  background: #d1d1d1;
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+  background: #0071c5;
+  border-radius: 6px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb:hover {
+  background: #003d82;
+}
+
+/* Timeline Cards */
+.timeline-card {
+  min-width: 350px;
+  max-width: 350px;
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.timeline-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #0071c5, #00c7fd);
+}
+
+/* Hover effect - scale the card */
+.timeline-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 113, 197, 0.3);
+  z-index: 10;
+}
+
+.timeline-card h2 {
+  color: #0071c5;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.timeline-card h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.timeline-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0;
+}
+
+/* Card Details - Overlay with transparent blue background */
+.card-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 113, 197, 0.95);
+  color: white;
+  font-size: 1rem;
+  line-height: 1.8;
+  padding: 30px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.timeline-card:hover .card-details {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Three-Column Bootstrap Grid Section */
+.three-column-section {
+  margin: 60px 0;
+}
+
+.content-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 113, 197, 0.2) !important;
+}
+
+.content-card i {
+  color: #0071c5;
+}
+
+.content-card h2 {
+  color: #333;
+}
+
+/* Subscription Section */
+.subscription-section {
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Modal Enhancements */
+.modal-content {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.modal-header {
+  border-bottom: none;
+  padding: 1.5rem;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal-body img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 300px;
+}
+
+.modal-footer {
+  border-top: 1px solid #dee2e6;
+  padding: 1rem 1.5rem;
+}
+
+/* Modal backdrop */
+.modal-backdrop.show {
+  opacity: 0.7;
+}
+
+/* Smooth modal animations */
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+}
+
+/* Footer Styles */
+footer a:hover {
+  text-decoration: underline !important;
+}
+
+/* RTL Support - Applied when dir="rtl" */
+[dir="rtl"] .timeline-container {
+  direction: rtl;
+}
+
+[dir="rtl"] .btn i {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .bi-arrow-right:before {
+  content: "\f12f"; /* arrow-left icon */
+}
+
+[dir="rtl"] .modal-header .btn-close {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+[dir="rtl"] .modal-title i {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* Improve accessibility - Focus states */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid #0071c5;
+  outline-offset: 2px;
+}
+
+/* High contrast for accessibility */
+.btn-outline-primary {
+  border-width: 2px;
+}
+
+/* Ensure sufficient color contrast */
+.text-muted {
+  color: #5a5a5a !important;
+}
+
+/* Form focus states for better accessibility */
+.form-control:focus,
+.form-check-input:focus {
+  border-color: #0071c5;
+  box-shadow: 0 0 0 0.25rem rgba(0, 113, 197, 0.25);
+}
+
+/* Responsive Design - Tablet and Mobile */
+@media (max-width: 768px) {
+  header {
+    padding: 40px 20px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  header img {
+    width: 80px;
+  }
+
+  /* Switch to vertical layout */
+  .timeline {
+    padding: 30px 0;
+  }
+
+  .timeline-container {
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: visible;
+    scroll-snap-type: none;
+    padding: 30px 20px;
+    align-items: center;
+    gap: 30px;
+    scroll-padding-left: 0;
+  }
+
+  .timeline-card {
+    min-width: 100%;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  /* Show overlay on tap/touch for mobile */
+  .card-details {
+    position: relative;
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+    background: rgba(0, 113, 197, 0.95);
+    margin-top: 0;
+    transition:
+      opacity 0.4s ease,
+      max-height 0.4s ease,
+      padding 0.4s ease,
+      margin-top 0.4s ease;
+  }
+
+  .timeline-card:hover .card-details,
+  .timeline-card:active .card-details {
+    opacity: 1;
+    max-height: 500px;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 8px;
+  }
+
+  .timeline-card:hover {
+    transform: scale(1.02);
+  }
+
+  /* Modal adjustments for mobile */
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  .modal-body {
+    max-height: 60vh;
+  }
+
+  .modal-body img {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .timeline-card {
+    padding: 20px;
+  }
+
+  .timeline-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .timeline-card h3 {
+    font-size: 1.2rem;
+  }
+}
